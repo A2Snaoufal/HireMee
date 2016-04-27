@@ -26,22 +26,22 @@ public class SaisieMotClé extends HttpServlet {
     
     protected void processRequest (HttpServletRequest request, HttpServletResponse response) throws IOException{
     	response.setContentType("text/html");
-    	PrintWriter out = response.getWriter();
+    	/*PrintWriter out = response.getWriter();
     	String mot = request.getParameter("keyword");
-    	out.println("vous avez cherché <b>"+mot+ "</b>");
+    	out.println("vous avez cherché <b>"+mot+ "</b>");*/
     }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request,response);
+		this.getServletContext().getRequestDispatcher("AffichageMotClé.jsp").forward( request, response );
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		processRequest(request,response);
+		
 	}
 
 }
