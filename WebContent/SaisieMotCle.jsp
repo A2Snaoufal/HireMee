@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h1> HireMe </h1>
-	<form action="SaisieMotClé" method="post">
+	<form action="SaisieMotCle" method="post">
 		Saisissez votre mot clé: <input type="text" name="keyword"/>
 		<input type="submit" value="Rechercher"/>
 	</form>
