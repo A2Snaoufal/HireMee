@@ -18,8 +18,13 @@
 		</attributes>
 	</classpathentry>
 <<<<<<< HEAD
+	<classpathentry kind="lib" path="D:/Users/iassafi/Downloads/javax.servlet.jar"/>
+	<classpathentry kind="lib" path="D:/Users/iassafi/Downloads/javax.servlet-3.0.jar"/>
+=======
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="D:/Users/nabdenim/Desktop/marklogic-xcc-8.0.5.jar"/>
 =======
+>>>>>>> master
 >>>>>>> master
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

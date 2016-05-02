@@ -41,4 +41,13 @@
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+  
+  <dependency>
+	<groupId>jstl</groupId>
+	<artifactId>jstl</artifactId>
+	<version>1.2</version>
+</dependency>
+  
+  </dependencies>
 </project>
