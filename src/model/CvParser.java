@@ -92,13 +92,13 @@ public class CvParser {
 		ObjectMapper mapper = new ObjectMapper();
 		
 		//Object to JSON in file
-	/*	try {
+		try {
 			mapper.writeValue(new File(uri), this);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-*/
+
 		//Object to JSON in String
 		return  mapper.writeValueAsString(this);
 		
@@ -108,16 +108,18 @@ public class CvParser {
 	public static void main(String[] args)  {
 		
 		CvParser cv=new CvParser();
+		String uri="cv.doc";
+		String uri2="cv.json";
 		try {
-			String text=cv.parseToString("cv.doc");
-			Metadata metadata=cv.parseToMetadata("cv.doc");
+			String text=cv.parseToString(uri);
+			Metadata metadata=cv.parseToMetadata(uri);
 			
 			System.out.println(metadata.get("Last-Author"));
 			System.out.println(metadata.get("Last-Save-Date"));
 			System.out.println(text);
 			////
 			CvParser cv2=new CvParser(0, metadata.get("Last-Author"),metadata.get("Last-Save-Date"), text);
-			cv2.toJSON("cv.json");
+			cv2.toJSON(uri2);
 		} catch (IOException | SAXException | TikaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
