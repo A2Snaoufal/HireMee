@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Taxonomy>
+    <family id="2">
+        <name>big data</name>
+        <skill>
+            <name>hadoop</name>
+            <value>1</value>
+        </skill>
+        <skill>
+            <name>spark</name>
+            <value>2</value>
+        </skill>
+        <skill>
+            <name>hive</name>
+            <value>3</value>
+        </skill>
+    </family>
+    <family id="1">
+        <name>cms</name>
+        <skill>
+            <name>drupal</name>
+            <value>4</value>
+        </skill>
+        <skill>
+            <name>jooma</name>
+            <value>5</value>
+        </skill>
+    </family>
+    <family id="3">
+        <name>NoSQL Databases</name>
+        <skill>
+            <name>marklogic</name>
+            <value>1</value>
+        </skill>
+        <skill>
+            <name>Cassandra</name>
+            <value>2</value>
+        </skill>
+    </family>
+    <family id="2">
+        <name>cms</name>
+        <skill>
+            <name>drupal</name>
+            <value>3</value>
+        </skill>
+        <skill>
+            <name>wordpress</name>
+            <value>4</value>
+        </skill>
+    </family>
+</Taxonomy>

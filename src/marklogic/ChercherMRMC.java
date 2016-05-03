@@ -56,7 +56,7 @@ public void setMC(String mC) {
 	}
 
 
-/*
+
 	public static void main(String[] args) throws XccConfigException, RequestException, URISyntaxException{
 		
 		        ChercherMRMC chercher =new ChercherMRMC();
@@ -78,7 +78,7 @@ public void setMC(String mC) {
 
 
 	}
-*/
+
 	
 	public ArrayList<String> ChercherMRMC() throws XccConfigException, URISyntaxException, RequestException{
 		String MC=this.MC;

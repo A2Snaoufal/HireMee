@@ -10,22 +10,22 @@ public class Config {
 
     public static Properties props = loadProperties();
     
-    protected static String host = props.getProperty("EmailApp.host");
+    public static String host = props.getProperty("EmailApp.host");
     
-    protected static String DbName = props.getProperty("EmailApp.DbName");
+    public static String DbName = props.getProperty("EmailApp.DbName");
 
     
-    protected static int port = Integer.parseInt(props.getProperty("EmailApp.port"));
+    public static int port = Integer.parseInt(props.getProperty("EmailApp.port"));
     
-    protected static String user = props.getProperty("EmailApp.writer_user");
+    public static String user = props.getProperty("EmailApp.writer_user");
     
-    protected static String password = props.getProperty("EmailApp.writer_password");
+    public static String password = props.getProperty("EmailApp.writer_password");
     
-    protected static String admin_user = props.getProperty("EmailApp.admin_user");
+    public static String admin_user = props.getProperty("EmailApp.admin_user");
     
-    protected static String admin_password = props.getProperty("EmailApp.admin_password");
+    public static String admin_password = props.getProperty("EmailApp.admin_password");
     
-    protected static Authentication authType = Authentication.valueOf(
+    public static Authentication authType = Authentication.valueOf(
                                                 props.getProperty("EmailApp.authentication_type").toUpperCase()
                                                 );
 
