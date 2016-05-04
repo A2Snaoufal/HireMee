@@ -1,9 +1,13 @@
 package model;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.ContentHandler;
+
+import marklogic.MarklogicConnector;
 
 import org.apache.tika.Tika;
 import org.apache.tika.exception.TikaException;
@@ -13,6 +17,7 @@ import org.apache.tika.sax.ToXMLContentHandler;
 import org.xml.sax.SAXException;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -70,7 +75,7 @@ public class CvParser {
 	public String parseToString(String uri) throws IOException, SAXException, TikaException {
 	    Tika tika = new Tika();
 	    try (InputStream stream = CvParser.class.getResourceAsStream(uri)) {
-	        return tika.parseToString(stream);
+	    	return tika.parseToString(stream);
 	    }
 	}
 	
@@ -80,6 +85,7 @@ public class CvParser {
 	    Metadata metadata = new Metadata();
 	    try (InputStream stream = CvParser.class.getResourceAsStream(uri)) {
 	    	parser.parse(stream, handler, metadata);
+	    
 	        return metadata;
 	    }
 	}
@@ -104,11 +110,25 @@ public class CvParser {
 		
 		
 	}
+	
+	InputStream toInputStream() throws JsonProcessingException, UnsupportedEncodingException{
+		ObjectMapper mapper = new ObjectMapper();
+		
+		String json;
+	
+	    json = mapper.writeValueAsString(this);
+		
+		// convert String into InputStream
+		
+		InputStream in = new ByteArrayInputStream(json.getBytes("UTF-8"));
+		
+		return in;
+	}
 
 	public static void main(String[] args)  {
 		
 		CvParser cv=new CvParser();
-		String uri="cv.doc";
+		String uri="cv2.doc";
 		String uri2="cv.json";
 		try {
 			String text=cv.parseToString(uri);
@@ -117,9 +137,14 @@ public class CvParser {
 			System.out.println(metadata.get("Last-Author"));
 			System.out.println(metadata.get("Last-Save-Date"));
 			System.out.println(text);
-			////
+			//// creation cv
 			CvParser cv2=new CvParser(0, metadata.get("Last-Author"),metadata.get("Last-Save-Date"), text);
 			cv2.toJSON(uri2);
+			
+			// insertion marklogic 
+			MarklogicConnector marklogic=new MarklogicConnector();
+			
+			marklogic.createJSONFromInputStream("cv.json",cv2.toInputStream(),"cv");
 		} catch (IOException | SAXException | TikaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
